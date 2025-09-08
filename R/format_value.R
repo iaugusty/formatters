@@ -241,8 +241,8 @@ round_sas <- function(x,
   z <- z + 0.5 + sqrt(.Machine$double.eps)
   z <- trunc(z)
   z <- z / 10^digits
-  # only include sign when rounded value strictly negative
-  if (z < 0) z <- z * posneg
+  # only include sign when rounded value strictly positive
+  if (z > 0) z <- z * posneg
   ## return numeric vector of rounded values
   z
 }
