@@ -740,19 +740,19 @@ setMethod(
 
 # round_type ---------------------------------------------------------------
 
-#' @keywords internal
+#' @export
 setGeneric("round_type", function(obj) standardGeneric("round_type"))
 
-#' @keywords internal
+#' @export
 setMethod(
   "round_type", "MatrixPrintForm",
   function(obj) obj$round_type
 )
 
-#' @keywords internal
+#' @export
 setGeneric("round_type<-", function(obj, value) standardGeneric("round_type<-"))
 
-#' @keywords internal
+#' @export
 setMethod(
   "round_type<-", "MatrixPrintForm",
   function(obj, value) {
