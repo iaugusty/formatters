@@ -140,7 +140,7 @@ setMethod("matrix_form", "MatrixPrintForm", function(obj,
                                                      indent_size = 2,
                                                      fontspec = NULL,
                                                      col_gap = NULL,
-                                                     round_type = c("iec", "sas")) {
+                                                     round_type = "iec") {
   if (!is.null(fontspec)) {
     mf_fontspec(obj) <- fontspec
   }
