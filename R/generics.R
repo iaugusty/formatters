@@ -737,3 +737,29 @@ setMethod(
     obj
   }
 )
+
+# round_type ---------------------------------------------------------------
+
+#' @keywords internal
+setGeneric("round_type", function(obj) standardGeneric("round_type"))
+
+#' @keywords internal
+setMethod(
+  "round_type", "MatrixPrintForm",
+  function(obj) obj$round_type
+)
+
+#' @keywords internal
+setGeneric("round_type<-", function(obj, value) standardGeneric("round_type<-"))
+
+#' @keywords internal
+setMethod(
+  "round_type<-", "MatrixPrintForm",
+  function(obj, value) {
+    if (!is.character(value)) {
+      stop("round_type must be a character value. Got object of class ", class(value))
+    }
+    obj$round_type <- value
+    obj
+  }
+)
