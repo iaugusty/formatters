@@ -19,7 +19,7 @@ call_format_fun <- function(f,
 formats_1d <- c(
   "xx", "xx.", "xx.x", "xx.xx", "xx.xxx", "xx.xxxx",
   "xx%", "xx.%", "xx.x%", "xx.xx%", "xx.xxx%", "(N=xx)", "N=xx", ">999.9", ">999.99",
-  "x.xxxx | (<0.0001)"
+  "x.xxxx | (<0.0001)", "none", " "
 )
 
 formats_2d <- c(
@@ -356,13 +356,15 @@ format_value <- function(x, format = NULL, output = c("ascii", "html"), na_str =
         "'. Run `list_valid_format_labels()` to get a list of all available formats."
       )
     }
-    if (format != "xx" && length(x) != l) {
+    if (!(format %in% c("xx", " ", "none")) && length(x) != l) {
       stop(
         "Cell contents <", paste(x, collapse = ", "), "> and format '",
         format, "' are of different lengths (", length(x), " vs ", l, ")."
       )
     }
     switch(format,
+      "none" = as.character(x),
+      " " = as.character(x),
       "xx" = as.character(x),
       "xx." = round_fmt(x, digits = 0, na_str = na_str, round_type = round_type),
       "xx.x" = round_fmt(x, digits = 1, na_str = na_str, round_type = round_type),

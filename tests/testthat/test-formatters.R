@@ -48,6 +48,16 @@ test_that("formats work", {
   )
 
   expect_identical(
+    format_value(values, format = " "),
+    paste(values)
+  )
+
+  expect_identical(
+    format_value(values, format = "none"),
+    paste(values)
+  )
+
+  expect_identical(
     format_value(values[1], format = "xx."),
     "5"
   )
@@ -384,6 +394,14 @@ test_that("formats work", {
   )
   expect_equal(
     format_value(NA, "xx", na_str = "-"),
+    "-"
+  )
+  expect_equal(
+    format_value(NA, " ", na_str = "-"),
+    "-"
+  )
+  expect_equal(
+    format_value(NA, "none", na_str = "-"),
     "-"
   )
 
@@ -877,7 +895,9 @@ test_that("All supported 1d format cases of decimal alignment", {
     "m        N=11                              N=11     right  ",
     "n        >999.9           >999.9                  dec_left ",
     "o        >999.99          >999.99                 dec_left ",
-    "p   1.1111 | (<0.0001)     1.1111 | (<0.0001)       right  "
+    "p   1.1111 | (<0.0001)     1.1111 | (<0.0001)       right  ",
+    "q          none          none                       left   ",
+    "r                                                 dec_right"
   )
   expect_identical(res_dec, expected)
 })
